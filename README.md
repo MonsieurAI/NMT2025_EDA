@@ -5,12 +5,26 @@ An exploratory data analysis (EDA) of the 2025 Ukrainian National Multi-Subject 
 ## Overview
 The goal of this analysis is to uncover the structural characteristics of the 2025 NMT results. By analyzing the raw testing data, this project explores how geography, educational institution type, and subject selection impact overall student performance.
 
-## Key Insights
-*   **The Math Ceiling Effect:** The mathematics exam distribution is highly right-skewed with an unnatural spike at the absolute maximum score (32 points). This indicates a lack of variance required to accurately differentiate between top-tier performers.
-*   **Academic Stratification:** Participant performance varies drastically by institution type. Specialized schools and Lyceums significantly outperform vocational schools and pre-higher educational institutions, establishing a clear national baseline.
-*   **The Physics/Math Prerequisite:** Joint distribution analysis (hexbin) shows that high mathematical proficiency acts as a prerequisite for success in physics, whereas the reverse is not true.
+## Data source
+The raw data for this analysis was published by the УЦОЯО (Український центр оцінювання якості освіти). 
 
-*(Note: See `notebooks/03_visualizations.ipynb` for the full visual breakdown and correlation matrices).*
+*   **Dataset Landing Page:** `https://zno.testportal.com.ua/opendata`
+*   **Retrieval Date:** 11 september 2025
+*   **Format:** CSV (semicolon-separated)
+
+## Key Insights
+*   **General score distribution shape:** Math score distribution is highly right-skewed, which indicates that the test was fairly hard for most participants. Other subjects also have similar distributions shape, but with lower skewness.
+
+![Mathematics Score Distribution](outputs/nmt2025_math_ukraine.svg)
+
+*   **The Math Ceiling Effect:** The mathematics exam distribution has an unnatural spike at the absolute maximum score (32 points). This indicates a lack of variance required to accurately differentiate between top-tier performers. Also, there are the most number of best-score participants for mathematics, which also confirms the hypothesis.
+*   **Correlational matrix:** Mandatory subjects are moderately or strongly positively correlated with each other and with optional subjects. Correlations vary between 0.54 (English and history of Ukraine) and 0.79 (Mathematics and Physics)
+
+![Correlational matrix](outputs/nmt2025_corrs.svg)
+
+*   **Academic stratification:** Participants from specialized schools highly outperforms participants from other educational institutions. Also, students from urban area tends to achive higher scores (the fraction of participants who achieved the highest scores is almost 5 times higher in urban area than rural)
+
+*(Note: See `outputs` directory for the full visual breakdown).*
 
 ## Project Structure
 ```text
@@ -18,12 +32,10 @@ nmt2025/
 │
 ├── data/                   # Raw and processed CSV datasets
 ├── notebooks/              # Jupyter notebooks for execution
-│   ├── 01_data_cleaning.ipynb
-│   ├── 02_data_tables.ipynb
-│   └── 03_visualizations.ipynb
+│   ├── data_cleaning.ipynb
+│   └── visualizations.ipynb
 ├── outputs/                # Generated SVG visualizations
-├── src/                    # Reusable Python modules
-│   ├── __init__.py
+├── utils/                  # Reusable Python modules
 │   └── load_data.py
 ├── .gitignore              
 ├── Dockerfile              # Container environment configuration
