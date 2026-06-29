@@ -52,10 +52,12 @@ nmt2025/
 ## How to Run (via Docker)
 To ensure full reproducibility, this project is configured to run inside a Docker container with a volume mount.
 
+**Note**: use Bash terminal for the following commands
+
 **1. Clone the repository:**
 ```bash
-git clone [https://github.com/MonsieurAI/nmt2025.git](https://github.com/MonsieurAI/nmt2025.git)
-cd nmt2025
+git clone https://github.com/MonsieurAI/NMT2025_EDA.git
+cd NMT2025_EDA
 ```
 
 **2. Build the Docker image:**
