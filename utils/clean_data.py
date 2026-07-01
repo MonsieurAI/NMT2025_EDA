@@ -1,6 +1,6 @@
 import pandas as pd
 import numpy as np
-from utils.load_data import load_raw_nmt2025
+from utils.load_data import load_data
 from pathlib import Path
 
 # Clean data file
@@ -90,7 +90,7 @@ def save(data,filename):
 
 if __name__ == '__main__':
     # Load raw data
-    data=load_raw_nmt2025()
+    data=load_data('raw_data',2025)
 
     # Subjects list (100-200 and standard scales)
     subjects = [col.replace('BlockBall100','') for col in data.columns if 'BlockBall100' in col]
