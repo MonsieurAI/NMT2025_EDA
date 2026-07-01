@@ -85,7 +85,7 @@ def without_absent_data(data,subjects):
 
 # Save files
 def save(data,filename):
-    DATA_PATH = Path(__file__).parent.parent / 'data' / f'nmt2025_{filename}.csv'
+    DATA_PATH = Path(__file__).parent.parent / 'data' / '2025' / f'nmt2025_{filename}.csv'
     data.to_csv(DATA_PATH,index=False,encoding='utf-8-sig')
 
 if __name__ == '__main__':
