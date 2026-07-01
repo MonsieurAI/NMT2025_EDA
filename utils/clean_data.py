@@ -3,6 +3,8 @@ import numpy as np
 from utils.load_data import load_data
 from pathlib import Path
 
+YEAR = 2025
+
 # Clean data file
 def clean_data(data,subjects):
     # Needed columns
@@ -85,12 +87,12 @@ def without_absent_data(data,subjects):
 
 # Save files
 def save(data,filename):
-    DATA_PATH = Path(__file__).parent.parent / 'data' / '2025' / f'nmt2025_{filename}.csv'
+    DATA_PATH = Path(__file__).parent.parent / 'data' / f'{YEAR}' / f'nmt{YEAR}_{filename}.csv'
     data.to_csv(DATA_PATH,index=False,encoding='utf-8-sig')
 
 if __name__ == '__main__':
     # Load raw data
-    data=load_data('raw_data',2025)
+    data=load_data('raw_data',YEAR)
 
     # Subjects list (100-200 and standard scales)
     subjects = [col.replace('BlockBall100','') for col in data.columns if 'BlockBall100' in col]
