@@ -78,7 +78,7 @@ def geo_data(data):
 
 # Without absent file
 def without_absent_data(data,subjects):
-    mask = (data[[f'{subj}BlockStatus' for subj in subjects]] != 'Не з’явився(лася)').any(axis=1)
+    mask = ~(data[[f'{subj}BlockStatus' for subj in subjects]] == 'Не з’явився(лася)').any(axis=1)
     data_without_absent = data[mask]
 
     return data_without_absent
